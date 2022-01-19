@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageGalleryItem from '../ImageGalleryItem';
 import { ImageGalleryList } from './ImageGallery.styled';
+import PropTypes from 'prop-types';
 
 const ImageGallery = ({ images, onModalShow }) => (
   <ImageGalleryList>
@@ -15,5 +16,17 @@ const ImageGallery = ({ images, onModalShow }) => (
     ))}
   </ImageGalleryList>
 );
+
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+    }),
+  ),
+  onModalShow: PropTypes.func.isRequired,
+};
 
 export default ImageGallery;
