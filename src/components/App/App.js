@@ -67,7 +67,7 @@ class App extends Component {
   };
 
   render() {
-    const { images, status, largeImg } = this.state;
+    const { images, status, largeImg, page } = this.state;
     return (
       <Container>
         <Searchbar onSubmitForm={this.handleFormSubmit} />
@@ -75,6 +75,13 @@ class App extends Component {
         {status === 'idle' && (
           <Notifications>Enter an image search query!</Notifications>
         )}
+        {status === 'pending' && page > 1 && (
+          <>
+            <ImageGallery images={images} onModalShow={this.onLargeImageOpen} />
+            <Loader />
+          </>
+        )}
+        {status === 'pending' && <Loader />}
         {status === 'rejected' && (
           <Notifications>Images by your query are not founded :(</Notifications>
         )}
@@ -84,7 +91,6 @@ class App extends Component {
             <Button onLoadMore={this.onLoadMore} />
           </>
         )}
-        {status === 'pending' && <Loader />}
         {largeImg && <Modal image={largeImg} onClose={this.closeModal}></Modal>}
       </Container>
     );
