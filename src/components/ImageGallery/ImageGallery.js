@@ -2,7 +2,7 @@ import React from 'react';
 import ImageGalleryItem from '../ImageGalleryItem';
 import { ImageGalleryList } from './ImageGallery.styled';
 
-const ImageGallery = ({ images }) => (
+const ImageGallery = ({ images, onModalShow }) => (
   <ImageGalleryList>
     {images.map(({ id, webformatURL, largeImageURL, tags }) => (
       <ImageGalleryItem
@@ -10,6 +10,7 @@ const ImageGallery = ({ images }) => (
         smallImage={webformatURL}
         largeImage={largeImageURL}
         tags={tags}
+        onModalShow={onModalShow}
       />
     ))}
   </ImageGalleryList>

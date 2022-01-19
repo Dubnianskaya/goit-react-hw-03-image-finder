@@ -6,3 +6,8 @@ export const Container = styled.div`
   grid-gap: 16px;
   padding-bottom: 24px;
 `;
+
+export const Notifications = styled.h2`
+  text-align: center;
+  font-size: 44px;
+`;
